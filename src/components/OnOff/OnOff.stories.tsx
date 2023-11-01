@@ -1,4 +1,3 @@
-import type {Meta} from '@storybook/react';
 import {action} from '@storybook/addon-actions';
 
 import {OnOff} from './OnOff';

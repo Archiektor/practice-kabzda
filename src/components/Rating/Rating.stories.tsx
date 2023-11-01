@@ -1,8 +1,5 @@
 import {action} from '@storybook/addon-actions';
-import {Rating, ValueType} from './Rating';
-import {useState} from 'react';
-import {Accordion} from '../Accordeon/Accordion';
-
+import {Rating} from './Rating';
 
 export default {
     component: Rating,

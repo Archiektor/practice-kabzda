@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
 import './App.css';
-import {UncontrolledAccordion} from './components/UncontolledAccordeon/UncontrolledAccordion';
-import {UncontrolledRating} from './components/UncontrolledRating/UncontrolledRating';
-import {UncontrolledOnOff} from './components/UncontrolledOnOff/UncontrolledOnOff';
 import {OnOff} from './components/OnOff/OnOff';
 
 const App = () => {
