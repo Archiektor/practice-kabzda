@@ -4,17 +4,29 @@ type AccordionPropsType = {
     title: string;
     collapsed: boolean
     onChange?: () => void
+    tasks: ItemType[]
+    onItemClick: (value: any) => void
 }
 type AccordionTitlePropsType = {
     title: string
     setChangeMode?: () => void
 }
 
-export const Accordion: React.FC<AccordionPropsType> = ({title, collapsed, onChange}) => {
+type AccordionBodyType = {
+    tasks: ItemType[]
+    onItemClick: (value: any) => void
+}
+
+type ItemType = {
+    title: string
+    value: any
+}
+
+export const Accordion: React.FC<AccordionPropsType> = ({title, collapsed, onChange, tasks, onItemClick}) => {
 
     return <div>
         <AccordionTitle title={title} setChangeMode={onChange}/>
-        {!collapsed && <AccordeonBody/>}
+        {!collapsed && <AccordionBody tasks={tasks} onItemClick={onItemClick}/>}
     </div>
 }
 
@@ -28,12 +40,19 @@ const AccordionTitle: React.FC<AccordionTitlePropsType> = ({title, setChangeMode
     return (<h3 onClick={onClickHandler}>{title}</h3>)
 }
 
-const AccordeonBody = () => {
+
+const AccordionBody: React.FC<AccordionBodyType> = ({tasks, onItemClick}) => {
+    const onItemClickHandler = (value: any) => {
+        onItemClick(value);
+    }
+
+    const tasksList = tasks.map((t, idx) => {
+        return <li key={idx} onClick={() => onItemClickHandler(t.value)}>{t.title}</li>
+    })
+
     return (
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            {tasksList}
         </ul>
     )
 }
