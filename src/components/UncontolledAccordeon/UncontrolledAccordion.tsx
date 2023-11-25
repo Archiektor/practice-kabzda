@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useReducer} from "react";
+import {collapseReducer, toggleAC} from '../../reducers/collapseReducer';
 
 type AccordionPropsType = {
     title: string;
@@ -10,12 +11,13 @@ type AccordionTitlePropsType = {
 }
 
 export const UncontrolledAccordion: React.FC<AccordionPropsType> = ({title}) => {
-    const [collapsed, setCollapsed] = useState<boolean>(true)
+    //const [collapsed, setCollapsed] = useState<boolean>(true)
+    const [state, dispatchCollapse] = useReducer(collapseReducer, {collapsed: false})
 
     return <div>
-        <AccordionTitle title={title} onClick={() => setCollapsed(!collapsed)}/>
+        <AccordionTitle title={title} onClick={() => dispatchCollapse(toggleAC(!state.collapsed))}/>
         {/*<button onClick={() => setCollapsed(!collapsed)}>X</button>*/}
-        {!collapsed && <AccordeonBody/>}
+        {!state.collapsed && <AccordionBody/>}
     </div>
 }
 
@@ -26,12 +28,12 @@ const AccordionTitle: React.FC<AccordionTitlePropsType> = ({title, onClick}) => 
         </h3>)
 }
 
-const AccordeonBody = () => {
+const AccordionBody = () => {
     return (
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            <li>First element</li>
+            <li>Second element</li>
+            <li>Third element</li>
         </ul>
     )
 }
