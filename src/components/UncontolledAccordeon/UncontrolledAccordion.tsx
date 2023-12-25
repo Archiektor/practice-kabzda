@@ -11,12 +11,10 @@ type AccordionTitlePropsType = {
 }
 
 export const UncontrolledAccordion: React.FC<AccordionPropsType> = ({title}) => {
-    //const [collapsed, setCollapsed] = useState<boolean>(true)
     const [state, dispatchCollapse] = useReducer(collapseReducer, {collapsed: false})
 
     return <div>
         <AccordionTitle title={title} onClick={() => dispatchCollapse(toggleAC(!state.collapsed))}/>
-        {/*<button onClick={() => setCollapsed(!collapsed)}>X</button>*/}
         {!state.collapsed && <AccordionBody/>}
     </div>
 }

@@ -1,8 +1,23 @@
 import React from 'react';
-import {ExampleComponent} from './ExampleComponent';
+import {UseMemoComponent} from './useMemoComponent';
+import {ReactMemoComponent} from './ReactMemoComponent';
+import {UseCallBackComponent} from './useCallbackComponent';
 
 export default {
-    title: 'React Memo Demo',
+    component: UseCallBackComponent,
 };
 
-export const Example1 = () => <ExampleComponent/>;
+export const ExampleWithUseMemo1 = () => {
+    return <UseMemoComponent/>
+}
+
+
+export const ExampleWithUseMemo2 = () => {
+    return <ReactMemoComponent/>
+}
+
+export const ExampleWithUseCallback3 = () => {
+    return <UseCallBackComponent/>
+}
+
+
